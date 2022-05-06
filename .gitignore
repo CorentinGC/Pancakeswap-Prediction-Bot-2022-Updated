@@ -3,6 +3,10 @@ bin-debug/
 bin-release/
 [Oo]bj/
 [Bb]in/
+node_modules/
+yarn.lock
+.env*
+!.env.example
 
 # Other files and folders
 .settings/
