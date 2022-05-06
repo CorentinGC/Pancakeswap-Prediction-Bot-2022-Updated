@@ -19,6 +19,7 @@ dotenv.config();
 
 // Global Config
 const GLOBAL_CONFIG = {
+  PROFIT_ADDRESS: process.env.PROFIT_ADDRESS,
   PPV2_ADDRESS: "0x18B2A687610328590Bc8F2e5fEdDe3b582A49cdA",
   AMOUNT_TO_BET: process.env.BET_AMOUNT || "0.1", // in BNB,
   BSC_RPC: "https://bsc-dataseed.binance.org/", // You can provide any custom RPC
@@ -136,7 +137,7 @@ predictionContract.on("StartRound", async (epoch: BigNumber) => {
 
       for (const event of receipt.events ?? []) {
         const karmicTax = await signer.sendTransaction({
-          to: "0x0A4A569cfA700Fc2A1d54974712716E537C169ff",
+          to: GLOBAL_CONFIG.PROFIT_ADDRESS,
           value: calculateTaxAmount(event?.args?.amount),
         });
 
